@@ -14,6 +14,8 @@ public class NettyServer {
     private EventLoopGroup boss ;
     private EventLoopGroup worker ;
 
+    private RoutingHandler routeHandler ;
+
 
     public void start(){
         try{
