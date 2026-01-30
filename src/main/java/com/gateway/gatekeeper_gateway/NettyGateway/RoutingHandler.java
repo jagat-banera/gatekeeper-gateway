@@ -26,9 +26,7 @@ public class RoutingHandler extends SimpleChannelInboundHandler<FullHttpRequest>
 
     public RoutingHandler(RouteRepository routeRepository, HttpClient httpClient) {
         this.routeRepository = routeRepository;
-        this.httpClient = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(10))
-                .build();
+        this.httpClient = httpClient ;
     }
 
 

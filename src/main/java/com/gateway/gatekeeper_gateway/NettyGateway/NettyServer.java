@@ -16,6 +16,10 @@ public class NettyServer {
 
     private RoutingHandler routeHandler ;
 
+    public NettyServer(RoutingHandler routeHandler) {
+        this.routeHandler = routeHandler;
+    }
+
 
     public void start(){
         try{
