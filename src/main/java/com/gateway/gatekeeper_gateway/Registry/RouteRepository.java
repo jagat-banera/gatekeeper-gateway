@@ -35,4 +35,12 @@ public class RouteRepository {
 
 
     }
+
+    public void addRoute(ActiveRouteView activeRouteView){
+
+        // Add a new route
+        routes.put(activeRouteView.getEndpoint() , activeRouteView.getTargetUrl());
+    }
+
+
 }

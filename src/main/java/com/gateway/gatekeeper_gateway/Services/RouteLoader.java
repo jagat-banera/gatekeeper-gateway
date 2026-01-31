@@ -47,5 +47,20 @@ public class RouteLoader {
     }
 
 
+    // For Hot Loading Routes
+
+    public boolean addRoute(ActiveRouteView activeRouteView){
+
+        try{
+            routeRepository.addRoute(activeRouteView);
+            return true ;
+        }catch (Exception e){
+            System.out.println(e);
+            return false ;
+        }
+
+    }
+
+
 
 }
