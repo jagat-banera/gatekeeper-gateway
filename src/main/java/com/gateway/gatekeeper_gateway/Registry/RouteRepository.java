@@ -42,5 +42,12 @@ public class RouteRepository {
         routes.put(activeRouteView.getEndpoint() , activeRouteView.getTargetUrl());
     }
 
+    public void deleteRoute(ActiveRouteView activeRouteView){
+
+        // Delete the existing Route
+
+        routes.remove(activeRouteView.getEndpoint());
+    }
+
 
 }

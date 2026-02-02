@@ -61,6 +61,19 @@ public class RouteLoader {
 
     }
 
+    // For Deleting the Routes on the GO
+
+    public boolean removeRoute(ActiveRouteView activeRouteView){
+        try {
+            routeRepository.deleteRoute(activeRouteView);
+            return true ;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return false ;
+        }
+    }
+
 
 
 }

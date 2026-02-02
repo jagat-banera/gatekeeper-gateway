@@ -32,4 +32,22 @@ public class RouteController {
 
     }
 
+
+    @PostMapping("/remove-route")
+    public ResponseEntity<String> removeRoute(@RequestBody ActiveRouteView activeRouteView){
+
+        if (routeLoader.removeRoute(activeRouteView)){
+            return ResponseEntity.ok("Route Deleted Successfully");
+        }
+
+        return ResponseEntity.internalServerError().body("Error Occurred while Deleting the Route");
+
+    }
+
+
+
+
+
+
+
 }
