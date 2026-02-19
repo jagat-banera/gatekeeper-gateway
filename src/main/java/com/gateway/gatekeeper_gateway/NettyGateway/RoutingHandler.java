@@ -1,5 +1,7 @@
 package com.gateway.gatekeeper_gateway.NettyGateway;
 
+import com.gateway.gatekeeper_gateway.DTOs.Route;
+import com.gateway.gatekeeper_gateway.DTOs.RouteKey;
 import com.gateway.gatekeeper_gateway.Registry.RouteRepository;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
@@ -34,15 +36,22 @@ public class RoutingHandler extends SimpleChannelInboundHandler<FullHttpRequest>
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
 
         String endpoint = request.uri().split("\\?")[0];
+        HttpMethod httpMethod = request.method();
 
-        String targetUrl = routeRepository.FindByEndpoint(endpoint);
+        Route route = routeRepository.FindByEndpoint(
+                new RouteKey(
+                        endpoint,
+                        httpMethod.toString()
+                )
+        );
 
-        if(targetUrl == null){
+        if(route == null){
             sendError(ctx, HttpResponseStatus.NOT_FOUND, "No route found for: " + endpoint);
+            return ;
         }
 
-        proxyToTarget(ctx, request, targetUrl);
 
+        proxyToTarget(ctx, request, route.targetUrl() );
 
     }
 

@@ -19,11 +19,19 @@ public class RouteRegistryClient {
     }
 
     public List<ActiveRouteView> fetchRoutes(){
+
         ActiveRouteView[] routes =
                 restTemplate.getForObject(
                         "http://localhost:8081/gateway/routes",
                         ActiveRouteView[].class
                 );
+
+        Arrays.stream(routes).toList().forEach(route ->
+                System.out.println(
+                        "Endpoint : " + route.routeKey().endpoint() +
+                                "  Method : " + route.routeKey().httpMethod() +
+                                "   TargetURL :" + route.route().targetUrl()
+                ));
 
         return routes == null
                 ? List.of()

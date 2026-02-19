@@ -1,26 +1,17 @@
 package com.gateway.gatekeeper_gateway.DTOs;
 
-public class ActiveRouteView {
+public record ActiveRouteView(
+        RouteKey routeKey,
+        Route route
+) {
 
-    private String endpoint;
-    private String targetUrl;
-
-    public ActiveRouteView() {
+    @Override
+    public RouteKey routeKey() {
+        return routeKey;
     }
 
-    public String getEndpoint() {
-        return endpoint;
-    }
-
-    public String getTargetUrl() {
-        return targetUrl;
-    }
-
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public void setTargetUrl(String targetUrl) {
-        this.targetUrl = targetUrl;
+    @Override
+    public Route route() {
+        return route;
     }
 }
