@@ -39,10 +39,7 @@ public class RouteLoader {
         }
 
         catch (Exception e){
-            throw new IllegalStateException(
-                    "Route Loading Unsuccesfull. Aborting Startup",
-                    e
-            );
+            System.out.println("Admin Not Available on statup");
         }
     }
 

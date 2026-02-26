@@ -1,8 +1,10 @@
 package com.gateway.gatekeeper_gateway.Services;
 import com.gateway.gatekeeper_gateway.DTOs.ActiveRouteView;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,9 @@ public class RouteRegistryClient {
 
     private final RestTemplate restTemplate ;
 
+    @Value("${gatekeeper.admin.url}")
+    private String adminUrl ;
+
     public RouteRegistryClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate ;
     }
@@ -22,7 +27,7 @@ public class RouteRegistryClient {
 
         ActiveRouteView[] routes =
                 restTemplate.getForObject(
-                        "http://localhost:8081/gateway/routes",
+                        adminUrl+"/gateway/routes",
                         ActiveRouteView[].class
                 );
 

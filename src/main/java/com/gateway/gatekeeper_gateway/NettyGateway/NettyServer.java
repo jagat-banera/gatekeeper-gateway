@@ -14,7 +14,7 @@ public class NettyServer {
     private EventLoopGroup boss ;
     private EventLoopGroup worker ;
 
-    private RoutingHandler routeHandler ;
+    private final RoutingHandler routeHandler ;
 
     public NettyServer(RoutingHandler routeHandler) {
         this.routeHandler = routeHandler;
@@ -31,7 +31,7 @@ public class NettyServer {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new NettyChannelnitializer(routeHandler));
 
-            bootstrap.bind(9090).sync();
+            bootstrap.bind(8080).sync();
 
             System.out.println("Started Netty Server at - " + System.currentTimeMillis() );
 
