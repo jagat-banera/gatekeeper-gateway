@@ -96,7 +96,7 @@ public class RoutingHandler extends SimpleChannelInboundHandler<FullHttpRequest>
                         return null;
                     });
 
-    }
+        }
 
         catch (Exception e){
             sendError(ctx ,HttpResponseStatus.BAD_GATEWAY, e.getMessage());

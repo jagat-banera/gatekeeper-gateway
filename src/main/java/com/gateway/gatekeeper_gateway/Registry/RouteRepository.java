@@ -34,8 +34,6 @@ public class RouteRepository {
                         loadedRoute.route()
                 )
         );
-
-
     }
 
     public void addRoute(ActiveRouteView activeRouteView){
